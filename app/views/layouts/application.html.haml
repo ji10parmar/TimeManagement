@@ -1,0 +1,37 @@
+!!! 5
+%html
+  %head
+    %title Time Management
+    = stylesheet_link_tag 'application'
+    = javascript_include_tag "http://www.google.com/jsapi", "chartkick"
+    = javascript_include_tag 'application'
+    = csrf_meta_tags
+    %meta{ :name => 'viewport', :content => 'width=device-width' }
+
+  %body
+
+    .wrapper
+      %header.header
+        %h1.title Time Management
+        %p
+          - if @current_user
+            Logged in as #{@current_user.name}, 
+            %a(title="Logout" href=logout_path) Logout
+
+      %nav.nav
+        %ul
+          %li= link_to "Dashboard", dashboard_path
+          %li= link_to "Profile", profile_path
+          %li= link_to "Statistics", statistics_path
+          %li= link_to "Logout", logout_path
+
+      .main
+        - if flash[:notice]
+          #notice.message= flash[:notice]
+        - elsif flash[:warning]
+          #warning.message= flash[:warning]
+
+        = yield
+
+      %footer.footer
+        %p Copyright 2014. Miguel Cabrera

@@ -1,0 +1,24 @@
+%p New project:
+
+
+= form_tag user_projects_path, :method => :post, :controller => 'projects', :action => 'create' do
+
+	%p= label :project, :name, 'Name'
+	%p= text_field :project, :name
+
+	%p= label :project, :description, 'Description'
+	%p= text_area :project, :description
+
+	
+	%p= hidden_field :project, :user_id, :value => @current_user.id
+
+
+	%p= submit_tag 'Create project'
+
+= if @project.errors.any?
+	%ul.Signup_errors
+	= for message_error in @project.errors.full_messages
+		%li= message_error
+
+
+= link_to "Back to dashboard", dashboard_path

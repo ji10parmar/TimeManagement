@@ -1,0 +1,26 @@
+%h2 Create New User
+
+= form_tag users_path, :method => :post, :controller => 'users', :action => 'create' do
+
+	%p= label :user, :name, 'Name'
+	%p= text_field :user, :name
+
+	%p= label :user, :email, 'Email'
+	%p= text_field :user, :email
+
+	%p= label :user, :password, 'Password'
+	%p= password_field :user, :password
+
+	%p= label :user, :password_confirmation, 'Password confirmation'
+	%p= password_field :user, :password_confirmation
+
+	%p= hidden_field :user, :provider, :value => 'registered'
+	
+	%p= submit_tag 'Sign up'
+
+= link_to 'Back to homepage', root_path
+
+= if @user.errors.any?
+	%ul.Signup_errors
+	= for message_error in @user.errors.full_messages
+		%li= message_error
