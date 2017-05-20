@@ -5,7 +5,7 @@ Background:
 	Given the user "mike" exists with email "mike@gmail.com" and password "secret"
 	And I am on the home page
 
-Scenario: User login with name
+Scenario: User login with Name
 	
 	When I follow "Login"
 	And I fill in "Name or email" with "mike"
