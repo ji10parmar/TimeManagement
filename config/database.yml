@@ -10,7 +10,6 @@ test: &TEST
   encoding: SQL_ASCII
   database: timemanagement
   pool: 5
-  
   password: jiten123
 
 production:
