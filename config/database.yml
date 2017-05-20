@@ -1,23 +1,22 @@
 development:
   adapter: postgresql
-  encoding: SQL_ASCII
+  encoding: utf8
   database: timemanagement
   pool: 5
   password: jiten123
 
 test: &TEST
   adapter: postgresql
-  encoding: SQL_ASCII
+  encoding: utf8
   database: timemanagement
   pool: 5
   password: jiten123
 
 production:
   adapter: postgresql
-  encoding: SQL_ASCII
+  encoding: utf8
   database: timemanagement
   pool: 5
-  
   password: jiten123
 
 cucumber:
