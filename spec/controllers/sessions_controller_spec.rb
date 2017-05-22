@@ -4,7 +4,7 @@ RSpec.describe SessionsController, :type => :controller do
 	before(:each) do
     	@user = FactoryGirl.create(:user)
   	end  
-
+#Jiten
 	describe 'Dashboard' do
 	    it 'should redirect to login if no user is logged in' do
 			get :dashboard
@@ -16,7 +16,7 @@ RSpec.describe SessionsController, :type => :controller do
 			expect(response).to render_template 'dashboard'
 		end
 	end
-
+#Jing
 	describe 'Login' do
 		it 'should render the correct view' do
 			get :login
@@ -28,14 +28,14 @@ RSpec.describe SessionsController, :type => :controller do
 			expect(response).to redirect_to dashboard_path
 		end
 	end
-
+#Jinee
 	describe 'Home' do
 		it 'should render the correct view' do
 			get :home
 			expect(response).to render_template 'home'
 		end
 	end
-
+#Ayesha
 	describe 'Logout' do
 		it 'should redirect to login' do
 			get :logout

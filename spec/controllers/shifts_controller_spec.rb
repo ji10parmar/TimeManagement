@@ -7,7 +7,7 @@ RSpec.describe ShiftsController, :type => :controller do
     	@shift = FactoryGirl.create(:shift,:project_id => @project.id)
     	session[:user_id] = @user.id
   	end
-
+#Rajvi
 	describe 'New shift' do
 		it 'should render the correct template' do
 			get :new, user_id: @user.id, project_id: @project.id
@@ -27,7 +27,7 @@ RSpec.describe ShiftsController, :type => :controller do
 	    	expect(response).to redirect_to dashboard_path
 	    end
 	end
-
+#Rajvi
 	describe 'Create shift' do
 		it 'should create a shift' do
 			shift_params = FactoryGirl.attributes_for(:shift, :project_id => @project.id)
@@ -48,7 +48,7 @@ RSpec.describe ShiftsController, :type => :controller do
 			expect(response).to render_template 'new'
 		end
 	end
-
+#Rajvi
 	describe 'Destroy shift' do
 		it 'deletes the shift' do
 			expect{ delete :destroy, user_id: @user.id, project_id: @project.id, id: @shift }.to change(Shift,:count).by(-1)
@@ -60,7 +60,7 @@ RSpec.describe ShiftsController, :type => :controller do
 	end
 
 	# Show shift is not necessary so its ommited
-
+#Rajvi
 	describe 'Edit shift' do
 		it 'locates the requested @shift' do
 			put :update, user_id: @user.id, project_id: @project.id, id: @shift, shift: FactoryGirl.attributes_for(:shift,project_id: @project.id)
