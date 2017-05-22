@@ -2,9 +2,9 @@
 
 == TIME MANAGEMENT
 
-This application aims to help freelancers to keep track of the time they spend on each project. It was developed as a way for me to put in practice everything I learned with the edX "Software as a Service" course. 
+The application aims to help users to keep track of the time they spend on each project. It was developed to help use time efficiently on each tasks involved in a project. 
 
-Although it is not entirely polished, you can try it out in http://time-management-app.herokuapp.com/
+Although it is not entirely polished, you can try it out in https://young-scrubland-28151.herokuapp.com/
 
 This project teached me how to:
 
@@ -17,4 +17,4 @@ This project teached me how to:
 * CSS layout with Flexbox
 
 
-This project is not intended to be forked or developed collaboratively, but feel free to comment on anything you want. 
+ 
