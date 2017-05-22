@@ -6,7 +6,7 @@ RSpec.describe ProjectsController, :type => :controller do
     	@project = FactoryGirl.create(:project,:user_id => @user.id)
     	session[:user_id] = @user.id
   	end  
-
+#Harini
 	describe 'New project' do
 	    it 'should render the correct template' do
 			get :new, user_id: @user.id
@@ -22,7 +22,7 @@ RSpec.describe ProjectsController, :type => :controller do
 	    	expect(assigns(:current_user)).to eq(@user)
 	    end
 	end
-
+#Harini
 	describe 'Create project' do
 		it 'should create a project' do
 			project_params = FactoryGirl.attributes_for(:project, :user_id => @user.id)
@@ -43,7 +43,7 @@ RSpec.describe ProjectsController, :type => :controller do
 			expect(response).to render_template 'new'
 		end
 	end
-
+#Rajvi
 	describe 'Destroy project' do
 		it 'deletes the project' do
 			expect{ delete :destroy, user_id: @user.id, id: @project }.to change(Project,:count).by(-1)
@@ -53,7 +53,7 @@ RSpec.describe ProjectsController, :type => :controller do
 			expect(response).to redirect_to dashboard_path
 		end
 	end
-
+#Rajvi
 	describe 'Show project' do
 		it 'renders the correct template' do
 			get :show, user_id: @user.id, id: @project
@@ -64,7 +64,7 @@ RSpec.describe ProjectsController, :type => :controller do
 			expect(assigns(:project)).to eq(@project)
 		end
 	end
-
+#Harini
 	describe 'Edit project' do
 		it 'locates the requested @project' do
 			put :update, user_id: @user.id, id: @project, project: FactoryGirl.attributes_for(:project,user_id: @user.id)
@@ -80,7 +80,7 @@ RSpec.describe ProjectsController, :type => :controller do
 			expect(response).to redirect_to "/users/#{@user.id}/projects/#{@project.id}"
 		end
 	end
-
+#Harini
 	describe 'Finish project' do
 		it 'locates the requested @project' do
 			get :finish, user_id: @user.id, id: @project, project: FactoryGirl.attributes_for(:project,user_id: @user.id)
@@ -96,7 +96,7 @@ RSpec.describe ProjectsController, :type => :controller do
 			expect(response).to redirect_to "/dashboard"
 		end
 	end
-
+#Harini
 	describe 'Resume project' do
 		it 'locates the requested @project' do
 			@project.finish
