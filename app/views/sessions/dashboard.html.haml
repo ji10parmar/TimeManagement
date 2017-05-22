@@ -29,7 +29,6 @@
 
 
 %section.dashboard-graph	
-
 	= column_chart @user_projects.map{ |project| { name: project.name, data: project.shifts.group_by_day(:end_date, format: "%D", last: 7 ).sum(:duration)  } }, library: {backgroundColor: "#eee",vAxis: {title: 'Hours'}, title: "Activity on the last week"}, stacked: true
 
 
