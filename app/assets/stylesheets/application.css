@@ -76,3 +76,12 @@ html,body {
 
 
 
+ul {
+    list-style-type : none;
+    color:white;
+}
+ul li {
+    list-style-type : none;
+    padding-top: 15px;
+    text-decoration: none;
+}
