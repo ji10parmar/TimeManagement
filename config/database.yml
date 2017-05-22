@@ -13,7 +13,7 @@ test: &TEST
   password: jiten123
 
 production:
-  adapter: heroku postgresql
+  adapter: postgresql
   encoding: SQL_ASCII
   database: timemanagement
   pool: 5
