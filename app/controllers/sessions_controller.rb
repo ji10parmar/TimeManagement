@@ -1,5 +1,5 @@
 class SessionsController < ApplicationController
-
+#Jiten
 	def dashboard
 		if session[:user_id]
 			@current_user =  User.find session[:user_id]
@@ -12,7 +12,7 @@ class SessionsController < ApplicationController
 			redirect_to :action => 'login'
 		end
 	end
-
+#Archana
 	def profile
 		if session[:user_id]
 			@current_user =  User.find session[:user_id]
@@ -20,7 +20,7 @@ class SessionsController < ApplicationController
 			redirect_to :action => 'login'
 		end
 	end
-
+#Prabhakar
 	def statistics
 		if session[:user_id]
 			@current_user =  User.find session[:user_id]
@@ -49,7 +49,7 @@ class SessionsController < ApplicationController
 	def login
 		#login form
 	end
-
+#Jing
 	def login_attempt
 		authorized_user = User.authenticate(params[:name_or_email],params[:login_password])
 		if authorized_user
@@ -69,12 +69,12 @@ class SessionsController < ApplicationController
 		session[:user_id] = user.id
 		redirect_to :action => 'dashboard'
 	end
-
+#Ayesha
 	def logout
 		session[:user_id] = nil
 		redirect_to :action => 'login'
 	end
-
+#Ayesha
 	def home
 		if session[:user_id] 
 			@current_user = User.find session[:user_id]

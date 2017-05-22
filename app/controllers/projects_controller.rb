@@ -1,13 +1,14 @@
 class ProjectsController < ApplicationController
 	
 	before_filter :check_user, :only => [:show, :new, :create, :destroy]
-
+#Harini
 	def new
 		@project = Project.new
 		@current_user =  User.find session[:user_id]
 	end
 
-	def create
+#Harini
+def create
 		@project = Project.new(params[:project].permit(:name, :description, :user_id))
 		if @project.save
 			flash[:notice] = "Project #{@project.name} created successfully."
@@ -24,7 +25,7 @@ class ProjectsController < ApplicationController
 	def show
 		@project = Project.find(params[:id])
 	end
-
+#Rajvi
 	def destroy
 		@project_name = Project.find(params[:id]).name
 		Project.destroy(params[:id])
@@ -32,11 +33,11 @@ class ProjectsController < ApplicationController
 		flash[:color] = "valid"
 		redirect_to "/dashboard"
 	end
-
+#Harini
 	def edit
 		@project = Project.find(params[:id])
 	end
-
+#Harini
 	def update
 		@project = Project.find(params[:id])
 		if @project.update(params[:project].permit(:name, :description, :user_id))
@@ -45,7 +46,7 @@ class ProjectsController < ApplicationController
 			render 'edit'
 		end
 	end
-
+#Rajvi
 	def finish
 		@project = Project.find(params[:id])
 		if @project.finished
@@ -57,7 +58,7 @@ class ProjectsController < ApplicationController
 			redirect_to "/dashboard"
 		end
 	end
-
+#Harini
 	def resume
 		@project = Project.find(params[:id])
 		if @project.finished
@@ -70,7 +71,7 @@ class ProjectsController < ApplicationController
 			redirect_to "/users/#{@project.user_id}/projects/#{@project.id}"
 		end
 	end
-
+#Harini
 	def check_user
 		#check that user in session is the same as user in url
 		if session[:user_id].to_i == params[:user_id].to_i

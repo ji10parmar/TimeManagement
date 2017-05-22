@@ -11,7 +11,7 @@ class ShiftsController < ApplicationController
 		@project = Project.find params[:project_id]
 		@shift = Shift.new
 	end
-
+#Rajvi
 	def create
 		@project = Project.find params[:project_id]
 		@user = User.find params[:user_id]
@@ -27,7 +27,7 @@ class ShiftsController < ApplicationController
 			render "new"
 		end
 	end	
-
+#Rajvi
 	def destroy
 		@project = Project.find params[:project_id]
 		@user = User.find params[:user_id]
@@ -36,7 +36,7 @@ class ShiftsController < ApplicationController
 		flash[:color] = "valid"
 		redirect_to "/users/#{@user.id}/projects/#{@project.id}/shifts"
 	end
-
+#Rajvi
 	def update
 		@shift = Shift.find(params[:id])
 		@project = Project.find(@shift.project_id)
@@ -46,13 +46,13 @@ class ShiftsController < ApplicationController
 			render 'edit'
 		end
 	end
-
+#Rajvi
 	def edit
 		@project = Project.find params[:project_id]
 		@user = User.find params[:user_id]
 		@shift = Shift.find(params[:id])
 	end
-
+#Rajvi
 	def check_user
 		#check that user in session is the same as user in url
 		if session[:user_id].to_i == params[:user_id].to_i

@@ -9,7 +9,7 @@ class UsersController < ApplicationController
 	def new
 		@user = User.new
 	end
-
+#Jing
 	def create
 		@user = User.new(params[:user].permit(:name, :email, :password, :password_confirmation, :provider))
 		if @user.save
@@ -24,7 +24,7 @@ class UsersController < ApplicationController
 		end
 
 	end	
-
+#Ayesha
 	def destroy
 		@user = User.find(params[:id])
 		User.destroy(params[:id])
