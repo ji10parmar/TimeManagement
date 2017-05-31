@@ -3,7 +3,8 @@ require 'rails_helper'
 RSpec.describe SessionsController, :type => :controller do
 	before(:each) do
     	@user = FactoryGirl.create(:user)
-  	end  
+end  
+
 #Jiten
 	describe 'Dashboard' do
 	    it 'should redirect to login if no user is logged in' do

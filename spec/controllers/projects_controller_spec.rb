@@ -17,12 +17,13 @@ RSpec.describe ProjectsController, :type => :controller do
 	    	get :new, user_id: @user.id
 	    	expect(response).to redirect_to login_path
 	    end
+#not required
 	    it 'should assign the proper user to @current_user' do
 	    	get :new, user_id: @user.id
 	    	expect(assigns(:current_user)).to eq(@user)
 	    end
 	end
-#Harini
+#Harini - Prabhakar
 	describe 'Create project' do
 		it 'should create a project' do
 			project_params = FactoryGirl.attributes_for(:project, :user_id => @user.id)
@@ -43,7 +44,7 @@ RSpec.describe ProjectsController, :type => :controller do
 			expect(response).to render_template 'new'
 		end
 	end
-#Rajvi
+#Harini
 	describe 'Destroy project' do
 		it 'deletes the project' do
 			expect{ delete :destroy, user_id: @user.id, id: @project }.to change(Project,:count).by(-1)
@@ -53,7 +54,7 @@ RSpec.describe ProjectsController, :type => :controller do
 			expect(response).to redirect_to dashboard_path
 		end
 	end
-#Rajvi
+#Harini - Prabhakar
 	describe 'Show project' do
 		it 'renders the correct template' do
 			get :show, user_id: @user.id, id: @project
@@ -80,7 +81,7 @@ RSpec.describe ProjectsController, :type => :controller do
 			expect(response).to redirect_to "/users/#{@user.id}/projects/#{@project.id}"
 		end
 	end
-#Harini
+#Harini #not required
 	describe 'Finish project' do
 		it 'locates the requested @project' do
 			get :finish, user_id: @user.id, id: @project, project: FactoryGirl.attributes_for(:project,user_id: @user.id)
@@ -96,7 +97,7 @@ RSpec.describe ProjectsController, :type => :controller do
 			expect(response).to redirect_to "/dashboard"
 		end
 	end
-#Harini
+#Harini #not required
 	describe 'Resume project' do
 		it 'locates the requested @project' do
 			@project.finish

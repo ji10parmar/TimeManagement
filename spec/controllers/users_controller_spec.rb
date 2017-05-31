@@ -5,14 +5,14 @@ RSpec.describe UsersController, :type => :controller do
     	@user = FactoryGirl.create(:user)
   	end  
 #Jing
-	describe 'Register a new user' do
+	describe 'Register' do
 	    it 'should render the correct template' do
 			get :new
 	    	expect(response).to render_template('new')
 	    end
 	end
 #Jinee
-	describe 'Get #index' do
+	describe 'render the index template' do
 		it 'should redirect to home' do
 			get :index
 			expect(response).to redirect_to login_path

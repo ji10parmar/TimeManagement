@@ -7,7 +7,7 @@ RSpec.describe ShiftsController, :type => :controller do
     	@shift = FactoryGirl.create(:shift,:project_id => @project.id)
     	session[:user_id] = @user.id
   	end
-#Rajvi
+#Rajvi - Prabhakar
 	describe 'New shift' do
 		it 'should render the correct template' do
 			get :new, user_id: @user.id, project_id: @project.id
@@ -27,7 +27,7 @@ RSpec.describe ShiftsController, :type => :controller do
 	    	expect(response).to redirect_to dashboard_path
 	    end
 	end
-#Rajvi
+#Rajvi - Prabhakar
 	describe 'Create shift' do
 		it 'should create a shift' do
 			shift_params = FactoryGirl.attributes_for(:shift, :project_id => @project.id)
@@ -38,10 +38,12 @@ RSpec.describe ShiftsController, :type => :controller do
 			post :create, user_id: @user.id, project_id: @project.id, :shift => shift_params
 			expect(response).to redirect_to "/users/#{@user.id}/projects/#{@project.id}"
 		end
+#not required
 		it 'should not create if data is invalid' do
 			shift_params = FactoryGirl.attributes_for(:invalid_shift, :project_id => @project.id)
 			expect { post :create, user_id: @user.id, project_id: @project.id, :shift => shift_params}.not_to change(Shift, :count)
 		end
+#not required
 		it 're-renders the new method if data is invalid' do
 			shift_params = FactoryGirl.attributes_for(:invalid_shift, :project_id => @project.id)
 			post :create, user_id: @user.id, project_id: @project.id, :shift => shift_params
@@ -60,12 +62,13 @@ RSpec.describe ShiftsController, :type => :controller do
 	end
 
 	# Show shift is not necessary so its ommited
-#Rajvi
+#Rajvi - Prabhakar
 	describe 'Edit shift' do
 		it 'locates the requested @shift' do
 			put :update, user_id: @user.id, project_id: @project.id, id: @shift, shift: FactoryGirl.attributes_for(:shift,project_id: @project.id)
 			expect(assigns(:shift)).to eq(@shift)
 		end
+#not required		
 		it 'changes @shift\'s attributes' do
 			time = Time.parse("01/01/2014 10:00")
 			put :update, user_id: @user.id, project_id: @project.id, id: @shift,shift: FactoryGirl.attributes_for(:shift,start_date: time, project_id: @project.id)
