@@ -78,6 +78,9 @@ group :test do
   # database_cleaner is not required, but highly recommended
   gem 'database_cleaner'
   gem 'capybara'
+  gem "simplecov"
+  gem "codeclimate-test-reporter", "~> 1.0.0"
+
 end
 
 # Heroku gem
