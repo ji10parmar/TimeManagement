@@ -1,4 +1,4 @@
-
+{<img src="https://codeclimate.com/github/ji10parmar/timemanagement/badges/gpa.svg" />}[https://codeclimate.com/github/ji10parmar/timemanagement]
 == TIME MANAGEMENT
 
 The application aims to help users to keep track of the time they spend on each project. It was developed to help use time efficiently on each tasks involved in a project. 
