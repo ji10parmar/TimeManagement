@@ -1,4 +1,4 @@
-Feature: User can view own profile
+Feature: User can view own Profile
 
 Background: 
 
