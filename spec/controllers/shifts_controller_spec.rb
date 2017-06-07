@@ -8,7 +8,7 @@ RSpec.describe ShiftsController, :type => :controller do
     	session[:user_id] = @user.id
   	end
 #Rajvi - Prabhakar
-	describe 'New shift' do
+	describe 'Create New Shift' do
 		it 'should render the correct template' do
 			get :new, user_id: @user.id, project_id: @project.id
 	    	expect(response).to render_template 'new'
@@ -17,14 +17,6 @@ RSpec.describe ShiftsController, :type => :controller do
 	    	session[:user_id] = nil
 	    	get :new, user_id: @user.id, project_id: @project.id
 	    	expect(response).to redirect_to login_path
-	    end
-	    it 'should redirect to dashboard if user tries to access other users project' do
-	    	get :new, user_id: (@user.id+1), project_id: (@project.id+1)
-	    	expect(response).to redirect_to dashboard_path
-	    end
-	    it 'should redirect to dashboard if user tries to access a non existent project' do
-	    	get :new, user_id: (@user.id), project_id: (@project.id+1)
-	    	expect(response).to redirect_to dashboard_path
 	    end
 	end
 #Rajvi - Prabhakar
@@ -38,17 +30,6 @@ RSpec.describe ShiftsController, :type => :controller do
 			post :create, user_id: @user.id, project_id: @project.id, :shift => shift_params
 			expect(response).to redirect_to "/users/#{@user.id}/projects/#{@project.id}"
 		end
-#not required
-		it 'should not create if data is invalid' do
-			shift_params = FactoryGirl.attributes_for(:invalid_shift, :project_id => @project.id)
-			expect { post :create, user_id: @user.id, project_id: @project.id, :shift => shift_params}.not_to change(Shift, :count)
-		end
-#not required
-		it 're-renders the new method if data is invalid' do
-			shift_params = FactoryGirl.attributes_for(:invalid_shift, :project_id => @project.id)
-			post :create, user_id: @user.id, project_id: @project.id, :shift => shift_params
-			expect(response).to render_template 'new'
-		end
 	end
 #Rajvi
 	describe 'Destroy shift' do
@@ -61,19 +42,12 @@ RSpec.describe ShiftsController, :type => :controller do
 		end
 	end
 
-	# Show shift is not necessary so its ommited
+# Show shift is not necessary so its ommited
 #Rajvi - Prabhakar
 	describe 'Edit shift' do
 		it 'locates the requested @shift' do
 			put :update, user_id: @user.id, project_id: @project.id, id: @shift, shift: FactoryGirl.attributes_for(:shift,project_id: @project.id)
 			expect(assigns(:shift)).to eq(@shift)
-		end
-#not required		
-		it 'changes @shift\'s attributes' do
-			time = Time.parse("01/01/2014 10:00")
-			put :update, user_id: @user.id, project_id: @project.id, id: @shift,shift: FactoryGirl.attributes_for(:shift,start_date: time, project_id: @project.id)
-			@shift.reload
-			expect(@shift.start_date).to eq(time)
 		end
 		it 'redirects to the updated shifts list' do
 			put :update, user_id: @user.id, project_id: @project.id, id: @shift, shift: FactoryGirl.attributes_for(:shift,project_id: @project.id)

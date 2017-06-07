@@ -32,8 +32,8 @@ class SessionsController < ApplicationController
 
 			# Find the project with most hours
 			project_array = @total_shifts.group(:project_id).sum(:duration).max_by{|k,v| v}
-			@most_hours_project = Project.find_by_id(project_array[0]).name
-			@most_hours = project_array[1]
+#			@most_hours_project = Project.find_by_id(project_array[0]).name
+#			@most_hours = project_array[1]
 
 			# Find the day with most hours
 			day_hash = @total_shifts.group_by_day(:end_date,format: "%D").sum(:duration)
@@ -45,11 +45,11 @@ class SessionsController < ApplicationController
 			redirect_to :action => 'login'
 		end
 	end
-
+#Jing
 	def login
 		#login form
 	end
-#Jing
+
 	def login_attempt
 		authorized_user = User.authenticate(params[:name_or_email],params[:login_password])
 		if authorized_user

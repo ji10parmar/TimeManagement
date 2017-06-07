@@ -6,7 +6,7 @@ RSpec.describe ProjectsController, :type => :controller do
     	@project = FactoryGirl.create(:project,:user_id => @user.id)
     	session[:user_id] = @user.id
   	end  
-#Harini
+#Harini - Archana
 	describe 'New project' do
 	    it 'should render the correct template' do
 			get :new, user_id: @user.id
@@ -16,11 +16,6 @@ RSpec.describe ProjectsController, :type => :controller do
 	    	session[:user_id] = nil
 	    	get :new, user_id: @user.id
 	    	expect(response).to redirect_to login_path
-	    end
-#not required
-	    it 'should assign the proper user to @current_user' do
-	    	get :new, user_id: @user.id
-	    	expect(assigns(:current_user)).to eq(@user)
 	    end
 	end
 #Harini - Prabhakar
@@ -44,7 +39,7 @@ RSpec.describe ProjectsController, :type => :controller do
 			expect(response).to render_template 'new'
 		end
 	end
-#Harini
+#Rajvi - Jiten
 	describe 'Destroy project' do
 		it 'deletes the project' do
 			expect{ delete :destroy, user_id: @user.id, id: @project }.to change(Project,:count).by(-1)
@@ -60,10 +55,6 @@ RSpec.describe ProjectsController, :type => :controller do
 			get :show, user_id: @user.id, id: @project
 			expect(response).to render_template 'show'
 		end
-		it 'assigns the requested project to @project' do
-			get :show, user_id: @user.id, id: @project
-			expect(assigns(:project)).to eq(@project)
-		end
 	end
 #Harini
 	describe 'Edit project' do
@@ -71,49 +62,21 @@ RSpec.describe ProjectsController, :type => :controller do
 			put :update, user_id: @user.id, id: @project, project: FactoryGirl.attributes_for(:project,user_id: @user.id)
 			expect(assigns(:project)).to eq(@project)
 		end
-		it 'changes @project\'s attributes' do
-			put :update, user_id: @user.id, id: @project, project: FactoryGirl.attributes_for(:project,name: "Another project", user_id: @user.id)
-			@project.reload
-			expect(@project.name).to eq("Another project")
-		end
 		it 'redirects to the updated project' do
 			put :update, user_id: @user.id, id: @project, project: FactoryGirl.attributes_for(:project, user_id: @user.id)
 			expect(response).to redirect_to "/users/#{@user.id}/projects/#{@project.id}"
 		end
 	end
-#Harini #not required
+#Rajvi - Jinee - Jiten
 	describe 'Finish project' do
 		it 'locates the requested @project' do
 			get :finish, user_id: @user.id, id: @project, project: FactoryGirl.attributes_for(:project,user_id: @user.id)
 			expect(assigns(:project)).to eq(@project)
-		end
-		it 'changes @project\'s finished attribute' do
-			get :finish, user_id: @user.id, id: @project, project: FactoryGirl.attributes_for(:project, user_id: @user.id)
-			@project.reload
-			expect(@project.finished).to eq(true)
 		end
 		it 'redirects to the dashboard' do
 			get :finish, user_id: @user.id, id: @project, project: FactoryGirl.attributes_for(:project, user_id: @user.id)
 			expect(response).to redirect_to "/dashboard"
 		end
 	end
-#Harini #not required
-	describe 'Resume project' do
-		it 'locates the requested @project' do
-			@project.finish
-			get :resume, user_id: @user.id, id: @project, project: FactoryGirl.attributes_for(:project,user_id: @user.id)
-			expect(assigns(:project)).to eq(@project)
-		end
-		it 'changes @project\'s finished attribute' do
-			@project.finish
-			get :resume, user_id: @user.id, id: @project, project: FactoryGirl.attributes_for(:project, user_id: @user.id)
-			@project.reload
-			expect(@project.finished).to eq(false)
-		end
-		it 'redirects back to the project' do
-			@project.finish
-			get :resume, user_id: @user.id, id: @project, project: FactoryGirl.attributes_for(:project, user_id: @user.id)
-			expect(response).to redirect_to "/users/#{@user.id}/projects/#{@project.id}"
-		end
-	end
+
 end

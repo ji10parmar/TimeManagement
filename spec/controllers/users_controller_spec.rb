@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe UsersController, :type => :controller do
 	before(:each) do
     	@user = FactoryGirl.create(:user)
-  	end  
+  	end
 #Jing
 	describe 'Register' do
 	    it 'should render the correct template' do

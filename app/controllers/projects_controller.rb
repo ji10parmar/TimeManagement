@@ -46,7 +46,7 @@ def create
 			render 'edit'
 		end
 	end
-#Rajvi
+#Rajvi - Jiten
 	def finish
 		@project = Project.find(params[:id])
 		if @project.finished

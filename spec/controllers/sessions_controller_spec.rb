@@ -5,7 +5,7 @@ RSpec.describe SessionsController, :type => :controller do
     	@user = FactoryGirl.create(:user)
 end  
 
-#Jiten
+#Jiten - Archana
 	describe 'Dashboard' do
 	    it 'should redirect to login if no user is logged in' do
 			get :dashboard

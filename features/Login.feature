@@ -1,4 +1,5 @@
-Feature: Returning user can login
+#Jing - prabhakar
+Feature: User can Login
 
 Background: 
 
